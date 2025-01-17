@@ -51,9 +51,9 @@ fn damagecal() {
     //9 = N / A
     let mut ammocal:HashMap<i32,Vec<i32>> = HashMap::new();
     ammocal.insert(1,vec![1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,1     ,4,4,3,4,4,4,4,4,4,4,3,4,3,4,3,4,4,4,4
-    ,4,4,3,4,4,4,4,3,4,4     ,0,0,0,0     ,9,0     ,9,9,9     ,0,0     ,0,0]);
+    ,4,4,3,4,4,4,4,3,4,4     ,0,0,0,0     ,9,0     ,0,0]);
     ammocal.insert(0,vec![5,5,5,5,5,5,5,5,5,2,5,5,5,2,5,5,5,5,5,5,5    ,8,8,7,8,8,8,8,8,8,8,6,8,6,8,6,8,8,8,8     
-    ,8,7,6,8,8,8,8,6,8,8     ,0,2,2,2     ,0,2     ,9,9,9     ,2,2     ,2,2]);
+    ,8,7,6,8,8,8,8,6,8,8     ,0,2,2,2     ,0,2     ,2,2]);
     //0 = None/A22
     //1 = Labv/SPH-5
     //2 = JPC2/SSH-68
@@ -62,13 +62,13 @@ fn damagecal() {
     //5 = 6B43/[ALTYN, Mich Helmet]
     //6 = R61
     let mut armor_damage_reduction:HashMap<i32,Vec<f32>> = HashMap::new();
-    armor_damage_reduction.insert(0, vec![0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0]);
-    armor_damage_reduction.insert(1, vec![0.15 , 0.15 , 0.15 , 0.15 , 0.15 , 0.15 , 0.33 , 0.46 , 0.55]);
-    armor_damage_reduction.insert(2, vec![0.15 , 0.15 , 0.15 , 0.15 , 0.15 , 0.35 , 0.52 , 0.65, 0.65]);
-    armor_damage_reduction.insert(3, vec![0.15 , 0.15 , 0.15 , 0.15 , 0.38 , 0.57 , 0.75 , 0.75 , 0.75]);
-    armor_damage_reduction.insert(4, vec![0.15 , 0.15 , 0.40 , 0.40 , 0.63 , 0.81 , 0.85 , 0.85 , 0.85]);
-    armor_damage_reduction.insert(5, vec![0.15 , 0.41 , 0.65 , 0.65 , 0.90 , 0.90 , 0.90 , 0.90 , 0.90]);
-    armor_damage_reduction.insert(6, vec![0.15 , 0.67 , 0.88 , 0.93 , 0.93 , 0.93 , 0.93 , 0.93 , 0.93]);
+    armor_damage_reduction.insert(0, vec![0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 1.0]);
+    armor_damage_reduction.insert(1, vec![0.15 , 0.15 , 0.15 , 0.15 , 0.15 , 0.15 , 0.33 , 0.46 , 0.55 , 1.0]);
+    armor_damage_reduction.insert(2, vec![0.15 , 0.15 , 0.15 , 0.15 , 0.15 , 0.35 , 0.52 , 0.65, 0.65 , 1.0]);
+    armor_damage_reduction.insert(3, vec![0.15 , 0.15 , 0.15 , 0.15 , 0.38 , 0.57 , 0.75 , 0.75 , 0.75 , 1.0]);
+    armor_damage_reduction.insert(4, vec![0.15 , 0.15 , 0.40 , 0.40 , 0.63 , 0.81 , 0.85 , 0.85 , 0.85 , 1.0]);
+    armor_damage_reduction.insert(5, vec![0.15 , 0.41 , 0.65 , 0.65 , 0.90 , 0.90 , 0.90 , 0.90 , 0.90 , 1.0]);
+    armor_damage_reduction.insert(6, vec![0.15 , 0.67 , 0.88 , 0.93 , 0.93 , 0.93 , 0.93 , 0.93 , 0.93 , 1.0]);
     std::process::Command::new("clear").status().unwrap();
     let ph:&str = &input("Gun Type\nRifle: 0     SMG: 1     Handgun: 2     Bolt-Action Rifle: 3     Sniper Rifle: 4     LMG: 5     ALL: 6\n>>>     ");
     std::process::Command::new("clear").status().unwrap();
