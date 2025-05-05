@@ -14,7 +14,13 @@ def get_data(value:str):
     return socket.recv().decode()
 
 def get_inputs():
-    return f"{GunInput.get()}///{BodyPartInput.get()}///{VestInput.get()}///{HelmetInput.get()}///{AmmoInput.get()}"
+    hp = HpInput.get()
+    if hp == "":
+        hp = "100"
+    gun = GunInput.get()
+    if gun == "":
+        gun = "0"
+    return f"{gun}///{BodyPartInput.get()}///{VestInput.get()}///{HelmetInput.get()}///{AmmoInput.get()}///{hp}"
 
 def update_gui(value:str):
     split_value = value.split("///")
@@ -39,6 +45,7 @@ def id_page_close():
 window = tk.CTk()
 window.geometry("500x500")
 window.title("Ghosts of Tabor Calculator")
+window.resizable(width=False, height=False)
 
 IdFrame = tk.CTkScrollableFrame(window,width=500,height=500)
 DamageFrame=tk.CTkFrame(window,width=500,height=500)
