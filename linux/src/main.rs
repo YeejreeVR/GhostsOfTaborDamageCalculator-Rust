@@ -12,9 +12,14 @@ fn main() {
         std::thread::sleep(std::time::Duration::from_millis(100));
         if msg.as_str().unwrap() != "exit" {
             let split_message = msg.as_str().unwrap().split("///").collect::<Vec<&str>>();
-            let calculated_damage = calculate_damage(split_message[0].parse().unwrap(), split_message[1].parse().unwrap(), split_message[2].parse().unwrap(), split_message[3].parse().unwrap(), split_message[4].parse().unwrap());
-            let response = format!("{}///{}///{}///{}///{}",calculated_damage["damage_per_shot"],calculated_damage["shots_to_kill"],calculated_damage["time_to_kill"],calculated_damage["damage_per_second"],calculated_damage["fire_rate"]);
-            responder.send(response.as_str(), 0).unwrap();
+            if msg.as_str().unwrap().contains("//////") || msg.as_str().unwrap().replace("/","").parse::<i32>().is_err(){
+                responder.send("Invalid Data///Invalid Data///Invalid Data///Invalid Data///Invalid Data", 0).unwrap()
+            }
+            else {
+                let calculated_damage = calculate_damage(split_message[0].parse().unwrap(), split_message[1].parse().unwrap(), split_message[2].parse().unwrap(), split_message[3].parse().unwrap(), split_message[4].parse().unwrap(), split_message[5].parse().unwrap());
+                let response = format!("{}///{}///{}///{}///{}",calculated_damage["damage_per_shot"],calculated_damage["shots_to_kill"],calculated_damage["time_to_kill"],calculated_damage["damage_per_second"],calculated_damage["fire_rate"]);
+                responder.send(response.as_str(), 0).unwrap();
+            }
         }
         else {
             responder.disconnect("tcp://*:5555").unwrap();
@@ -22,15 +27,7 @@ fn main() {
         }
     }
 }
-fn input(msg:&str) -> String {
-    use std::io::{stdin,stdout,Write};
-    print!("{}",msg);
-    stdout().flush().unwrap();
-    let mut res:String = String::new();
-    stdin().read_line(&mut res).expect("Invalid Thingy!!! ^_^").to_string();
-    res.trim().to_string()
-}
-fn calculate_damage(gun:usize,bodypart:i32,vest:i32,helmet:i32,ammo_type:i32) -> HashMap<String, f32> {
+fn calculate_damage(gun:usize,bodypart:i32,vest:i32,helmet:i32,ammo_type:i32,hp:i32) -> HashMap<String, f32> {
     //Bodyparts
     //0 = Head
     //1 = Neck
@@ -102,7 +99,7 @@ fn calculate_damage(gun:usize,bodypart:i32,vest:i32,helmet:i32,ammo_type:i32) ->
     let mut shots_to_kill = 0.0;
     let mut time_to_kill = 0.0;
     if damage_per_shot >= 0.0 {
-        shots_to_kill = 100.0 / damage_per_shot;
+        shots_to_kill = hp as f32 / damage_per_shot;
         time_to_kill = shots_to_kill / ats[gun] as f32;
     } else {
         shots_to_kill = 0.0;
@@ -113,7 +110,7 @@ fn calculate_damage(gun:usize,bodypart:i32,vest:i32,helmet:i32,ammo_type:i32) ->
     //shots to kill = calculate_damage()["shots_to_kill"]
     //time to kill = calculate_damage()["time_to_kill"]
     let mut ret:HashMap<String,f32> = HashMap::new();
-    ret.insert("damage_per_shot".to_string(), damage_per_second);
+    ret.insert("damage_per_shot".to_string(), damage_per_shot);
     ret.insert("shots_to_kill".to_string(), shots_to_kill.ceil());
     ret.insert("time_to_kill".to_string(), time_to_kill);
     ret.insert("damage_per_second".to_string(), damage_per_second);
