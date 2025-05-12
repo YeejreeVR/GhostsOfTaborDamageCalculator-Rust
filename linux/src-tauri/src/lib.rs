@@ -37,7 +37,7 @@ fn calculatedamage(gun:&str, bodypart:&str, vest:&str, helmet:&str, ammotype:&st
     //2 = Tracer
 
     let ats: Vec<i32> = vec![624, 706, 624, 624, 624, 1000, 706, 990, 706, 545, 545, 800, 1000, 180, 949, 596, 857, 180, 923, 706, 1000, 747, 1000, 1091, 1091, 1200, 1500, 1600, 600, 524, 747, 1040, 947, 1111, 674, 1046, 747, 600, 600, 857, 180, 180, 180, 180, 180, 180, 180, 180, 180, 180, 60, 60, 60, 60, 180, 180, 500, 666];
-    let bodypart_damage: Vec<f32> = vec![1.0, 1.0, 1.0, 0.5, 0.5, 0.35, 0.35, 0.25, 0.25];
+    let bodypart_damage: Vec<f32> = vec![2.5, 2.5, 1.0, 1.0, 1.35, 1.3, 1.1, 1.05, 0.9,0.85];
     let vest_covering_body: Vec<Vec<i32>> = vec![vec![], vec![2], vec![1, 2], vec![1, 2], vec![1, 2], vec![1, 2, 3, 4], vec![1, 2, 3, 4, 5]];
 
     let mut ammo_damage: HashMap<i32, Vec<f32>> = HashMap::new();
@@ -62,8 +62,8 @@ fn calculatedamage(gun:&str, bodypart:&str, vest:&str, helmet:&str, ammotype:&st
     let mut armor_damage_reduction: HashMap<i32, Vec<f32>> = HashMap::new();
     armor_damage_reduction.insert(0, vec![0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]);
     armor_damage_reduction.insert(1, vec![0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.33, 0.46, 0.55, 1.0]);
-    armor_damage_reduction.insert(2, vec![0.15, 0.15, 0.15, 0.15, 0.15, 0.35, 0.52, 0.65, 0.65, 1.0]);
-    armor_damage_reduction.insert(3, vec![0.15, 0.15, 0.15, 0.15, 0.38, 0.57, 0.75, 0.75, 0.75, 1.0]);
+    armor_damage_reduction.insert(2, vec![0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.52, 0.65, 0.65, 1.0]);
+    armor_damage_reduction.insert(3, vec![0.15, 0.15, 0.15, 0.15, 0.38, 0.75, 0.75, 0.75, 0.75, 1.0]);
     armor_damage_reduction.insert(4, vec![0.15, 0.15, 0.40, 0.40, 0.63, 0.81, 0.85, 0.85, 0.85, 1.0]);
     armor_damage_reduction.insert(5, vec![0.15, 0.41, 0.65, 0.65, 0.90, 0.90, 0.90, 0.90, 0.90, 1.0]);
     armor_damage_reduction.insert(6, vec![0.15, 0.67, 0.88, 0.93, 0.93, 0.93, 0.93, 0.93, 0.93, 1.0]);
