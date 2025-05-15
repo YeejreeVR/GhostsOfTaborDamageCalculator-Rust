@@ -1,0 +1,15 @@
+{
+  "name": "ghosts_of_tabor_calculator_web",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "ghosts_of_tabor_calculator_web_bg.wasm",
+    "ghosts_of_tabor_calculator_web.js",
+    "ghosts_of_tabor_calculator_web.d.ts"
+  ],
+  "main": "ghosts_of_tabor_calculator_web.js",
+  "types": "ghosts_of_tabor_calculator_web.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
