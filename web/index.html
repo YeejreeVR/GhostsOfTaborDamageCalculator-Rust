@@ -24,8 +24,8 @@
             const damage =  calculatedamage(GunInput.value,BodypartInput.value,VestInput.value,HelmetInput.value,AmmoTypeInput.value)
             const newdamage = damage.split("///")
             DamagePerShotOutput.innerHTML = `Damage per Shot: ${newdamage[0]}`
-            ShotsToKillOutput.innerHTML = `Shots to Kill: ${newdamage[1]}`
-            TimeToKillOutput.innerHTML = `Time to Kill to Kill: ${newdamage[2]}`
+            ShotsToKillOutput.innerHTML = `Shots to Kill Body Part: ${newdamage[1]}`
+            TimeToKillOutput.innerHTML = `Time to Kill to Kill Body Part: ${newdamage[2]}`
             DamagePerSecondOutput.innerHTML =  `Damage per Second: ${newdamage[3]}`
             FirerateOutput.innerHTML = `Shots per Minute: ${newdamage[4]}`
         }
@@ -110,6 +110,7 @@
     <optgroup label="LMGs">
         <option value="56">BAR</option>
         <option value="57">XM250</option>
+        <option value="58">M249</option>
     </optgroup>
 </select>
 <label for="helmet">Helmet</label>
