@@ -59,13 +59,20 @@ use wasm_bindgen::prelude::*;
                                , 8, 7, 6, 8, 8, 8, 8, 6, 8, 8, 0, 2, 2, 2, 0, 2, 2, 2]);
 
         let mut armor_damage_reduction: HashMap<i32, Vec<f32>> = HashMap::new();
-        armor_damage_reduction.insert(0, vec![0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]);
-        armor_damage_reduction.insert(1, vec![0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.33, 0.46, 0.55, 1.0]);
-        armor_damage_reduction.insert(2, vec![0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.52, 0.65, 0.65, 1.0]);
-        armor_damage_reduction.insert(3, vec![0.15, 0.15, 0.15, 0.15, 0.38, 0.75, 0.75, 0.75, 0.75, 1.0]);
-        armor_damage_reduction.insert(4, vec![0.15, 0.15, 0.40, 0.40, 0.63, 0.81, 0.85, 0.85, 0.85, 1.0]);
-        armor_damage_reduction.insert(5, vec![0.15, 0.41, 0.65, 0.65, 0.90, 0.90, 0.90, 0.90, 0.90, 1.0]);
-        armor_damage_reduction.insert(6, vec![0.15, 0.67, 0.88, 0.93, 0.93, 0.93, 0.93, 0.93, 0.93, 1.0]);
+    //A22/None
+    armor_damage_reduction.insert(0, vec![0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]);
+    //LabV                                      FPAP   IAP   FP   PDWAP PAP   I     PDW   BP    P     Barret
+    armor_damage_reduction.insert(1, vec![0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.35, 0.05, 0.05, 1.0]);
+    //JPC2
+    armor_damage_reduction.insert(2, vec![0.10, 0.10, 0.10, 0.05, 0.05, 0.10, 0.50, 0.50, 0.50, 1.0]);
+    //VestB
+    armor_damage_reduction.insert(3, vec![0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.55, 0.55, 0.55, 1.0]);
+    //6B102
+    armor_damage_reduction.insert(4, vec![0.20, 0.20, 0.20, 0.20, 0.20, 0.20, 0.55, 0.65, 0.65, 1.0]);
+    //6B43
+    armor_damage_reduction.insert(5, vec![0.25, 0.25, 0.75, 0.25, 0.75, 0.75, 0.75, 0.75, 0.75, 1.0]);
+    //R61
+    armor_damage_reduction.insert(6, vec![0.15, 0.67, 0.88, 0.93, 0.93, 0.93, 0.93, 0.93, 0.93, 1.0]);
         let mut armor = 0;
         if newbodypart == 0 {
             armor = newhelmet;
