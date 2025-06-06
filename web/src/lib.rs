@@ -129,7 +129,7 @@ use wasm_bindgen::prelude::*;
     let mut time_to_kill = 0.0;
     if damage_per_shot >= 0.0 {
         shots_to_kill = 100.0 / damage_per_shot;
-        time_to_kill = shots_to_kill.ceil() / (ats[newgun] as f32 / 60.0);
+        time_to_kill = (shots_to_kill.ceil() - 1.0) / (ats[newgun] as f32 / 60.0);
     } else {
         shots_to_kill = 0.0;
         time_to_kill = 0.0;
