@@ -40,8 +40,8 @@ use wasm_bindgen::prelude::*;
                              747, 1000, 1091, 1091, 1200, 1500, 1600, 600, 524, 747,
                              1040, 947, 1111, 674, 1046, 747, 600, 600, 857, 180,
                              180, 180, 180, 180, 180, 180, 180, 180, 180, 60,
-                             60, 60, 60, 180, 180, 500, 666, 1000, 600, 850,
-                             675, 1200, 666];
+                             60, 60, 60, 180, 180, 500, 666, 1000, 700, 970,
+                             970, 1200, 666];
     let bodypart_damage: Vec<f32> = vec![2.5, 2.5, 1.0, 1.0, 1.35, 1.3, 1.1, 1.05, 0.9,0.85];
     let vest_covering_body: Vec<Vec<i32>> = vec![vec![], vec![2], vec![1, 2], vec![1, 2], vec![1, 2], vec![1, 2, 3, 4], vec![1, 2, 3, 4, 5]];
 
@@ -129,7 +129,7 @@ use wasm_bindgen::prelude::*;
     let mut time_to_kill = 0.0;
     if damage_per_shot >= 0.0 {
         shots_to_kill = 100.0 / damage_per_shot;
-        time_to_kill = shots_to_kill / (ats[newgun] as f32 / 60.0);
+        time_to_kill = shots_to_kill.ceil() / (ats[newgun] as f32 / 60.0);
     } else {
         shots_to_kill = 0.0;
         time_to_kill = 0.0;
